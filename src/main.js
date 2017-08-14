@@ -2,8 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import FastClick from 'fastclick'
-import App from './App'
+require('es6-promise').polyfill()
+import App from './app'
 import router from './framework/router'
+import { AjaxPlugin } from 'vux'
+Vue.use(AjaxPlugin)
 
 FastClick.attach(document.body)
 

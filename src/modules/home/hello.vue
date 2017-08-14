@@ -1,8 +1,8 @@
 <template>
   <div>
     <group>
-      <cell title="title" value="1">
-        <span @click="goto('a')">2</span>
+      <cell title="title22" value="2122">
+        <span @click="goto('a')">sss</span>
       </cell>
     </group>
   </div>
