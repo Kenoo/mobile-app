@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 require('es6-promise').polyfill()
-import App from './app'
+import App from './framework/app'
 import router from './framework/router'
 import { AjaxPlugin } from 'vux'
 Vue.use(AjaxPlugin)

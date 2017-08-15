@@ -44,6 +44,7 @@
     }
     .login .header {
       margin-top: 20px;
+      font-size: 18px;
       text-align: center;
     }
     .login .btns {

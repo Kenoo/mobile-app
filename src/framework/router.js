@@ -14,9 +14,16 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'a',
+      name: 'Home',
       component: function (resolve) {
-        require(['modules/home/hello'], resolve)
+        require(['modules/home/index'], resolve)
+      }
+    },
+    {
+      path: '/upload',
+      name: 'Upload',
+      component: function (resolve) {
+        require(['modules/upload/index'], resolve)
       }
     }
   ]
