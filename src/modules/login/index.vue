@@ -9,8 +9,8 @@
 
         </group>
 
-        <x-button type="primary" class="btns">登录</x-button>
-        <a href="#">忘记密码</a>
+        <x-button type="primary" class="btns" @click.native="onLogin">登录</x-button>
+        <a href="#" @click.prevent="onForget">忘记密码</a>
     </div>
 </template>
 
@@ -28,11 +28,23 @@
     data () {
       return {
         username: '',
-        password: '',
-        msg: 'Welcome to Your Vue.js App'
+        password: ''
       }
     },
     methods: {
+
+      onForget () {
+        this.$router.push('forget')
+      },
+
+      onLogin () {
+        this.$http.post('/user/login', {
+          username: this.username,
+          password: this.password
+        }).then(function () {
+
+        })
+      }
     }
   }
 </script>

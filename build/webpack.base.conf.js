@@ -1,6 +1,5 @@
 var path = require('path')
 var utils = require('./utils')
-
 var projectRoot = path.resolve(__dirname, '../')
 const vuxLoader = require('vux-loader')
 
@@ -70,7 +69,6 @@ let webpackConfig = {
     ]
   }
 }
-
 
 module.exports = vuxLoader.merge(webpackConfig, {
   plugins: ['vux-ui', 'progress-bar', 'duplicate-style']

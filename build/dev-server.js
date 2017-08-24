@@ -19,10 +19,37 @@ var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
+
+var app = express()
 // https://github.com/chimurai/http-proxy-middleware
 var proxyTable = config.dev.proxyTable
 
-var app = express()
+// 请求代码与数据mock
+/**
+ * 需要定制一个过滤规则
+ * @return {Boolean}
+ */
+var filter = function (pathname, req) {
+  if (/\..+$|\/$/.test(pathname) && pathname){
+    return false
+  } else {
+    if (pathname.indexOf('__webpack') > -1 ) {
+      return false
+    }
+    return true
+  }
+}
+
+Object.keys(proxyTable).forEach(function (context) {
+  var options = proxyTable[context]
+  if (typeof options === 'string') {
+    options = { target: options }
+  }
+  if (context === 'mock') {
+    app.use(proxyMiddleware(filter, options))
+  }
+})
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
